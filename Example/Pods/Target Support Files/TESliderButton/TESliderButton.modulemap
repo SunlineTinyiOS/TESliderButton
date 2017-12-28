@@ -1,0 +1,6 @@
+framework module TESliderButton {
+  umbrella header "TESliderButton-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TESliderButton_Example' do
+  pod 'TESliderButton', :path => '../'
+
+  target 'TESliderButton_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

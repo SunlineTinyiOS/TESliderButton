@@ -1,0 +1,22 @@
+{
+  "name": "TESliderButton",
+  "version": "0.1.0",
+  "summary": "A short description of TESliderButton.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/顾卫明/TESliderButton",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "顾卫明": "471289774@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/顾卫明/TESliderButton.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "TESliderButton/Classes/**/*"
+}

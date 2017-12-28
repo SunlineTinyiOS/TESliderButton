@@ -1,0 +1,16 @@
+PODS:
+  - TESliderButton (0.1.0)
+
+DEPENDENCIES:
+  - TESliderButton (from `../`)
+
+EXTERNAL SOURCES:
+  TESliderButton:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TESliderButton: d6b7e1900b73bcbc4329c7acef52d109d13e4701
+
+PODFILE CHECKSUM: 810c0e1b5f7ae487b9cdc5e6b3706304fa8ecbc4
+
+COCOAPODS: 1.2.1
