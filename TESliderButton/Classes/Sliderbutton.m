@@ -12,7 +12,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor clearColor];
         self.partRectArray = [NSMutableArray array];
         self.numberOfPart = 5;
         self.sliderBarHeight = 10;
@@ -41,6 +41,8 @@
     
     //画滑块
     [self loadThumWithContext:context];
+    
+//    self.backgroundColor = [UIColor colorWithHex:self.bgcolor];
 }
 
 //画滑块
@@ -116,10 +118,10 @@
 //开始拖动
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
     CGPoint point = [touch locationInView:self];
-    //可滑动范围
-    if (!CGRectContainsPoint(self.sliderRect, point)) {
-        return NO;
-    }
+    //可滑动范围 写了的话 滑动范围很小
+//    if (!CGRectContainsPoint(self.sliderRect, point)) {
+//        return NO;
+//    }
     int index = [self getCurrentXWithOffset:point.x];
     self.thumbRect = [self.partRectArray[index] CGRectValue];
     [self setNeedsDisplay];

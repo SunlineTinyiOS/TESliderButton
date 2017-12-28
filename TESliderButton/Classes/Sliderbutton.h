@@ -31,9 +31,11 @@
 @property(nonatomic,assign)BOOL isFirst;        //首次运行
 @property (nonatomic,copy) NSString *textUnitColor;//设置字体颜色
 
+@property (nonatomic, copy) NSString *bgcolor;
 @property (nonatomic, assign) CGFloat textUnitFont;
 @property (nonatomic, assign) NSInteger indexvalue;
 @property (nonatomic, copy) NSString *ButtonText;
 @property (nonatomic, assign) CGFloat ButtonRadius;
 @property (nonatomic, copy) NSString *ButtonColor;
+
 @end

@@ -30,7 +30,7 @@
 @property(nonatomic,strong)NSMutableArray *partRectArray; //节点frame数组
 @property(nonatomic,assign)BOOL isFirst;        //首次运行
 @property (nonatomic,copy) NSString *textUnitColor;//设置字体颜色
-
+@property (nonatomic,copy) NSString *bgcolor;//设置字体颜色
 @property (nonatomic, assign) CGFloat textUnitFont;
 @property (nonatomic, assign) NSInteger indexvalue;
 @property (nonatomic, copy) NSString *ButtonText;
