@@ -42,7 +42,7 @@
     //画滑块
     [self loadThumWithContext:context];
     
-//    self.backgroundColor = [UIColor colorWithHex:self.bgcolor];
+    //    self.backgroundColor = [UIColor colorWithHex:self.bgcolor];
 }
 
 //画滑块
@@ -119,9 +119,9 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
     CGPoint point = [touch locationInView:self];
     //可滑动范围 写了的话 滑动范围很小
-//    if (!CGRectContainsPoint(self.sliderRect, point)) {
-//        return NO;
-//    }
+    //    if (!CGRectContainsPoint(self.sliderRect, point)) {
+    //        return NO;
+    //    }
     int index = [self getCurrentXWithOffset:point.x];
     self.thumbRect = [self.partRectArray[index] CGRectValue];
     [self setNeedsDisplay];
@@ -134,21 +134,23 @@
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event {
     CGPoint point = [touch locationInView:self];
     CGFloat thumbImageX = point.x - self.thumbSize.width/2;
-    self.thumbRect = CGRectMake(thumbImageX, self.thumbRect.origin.y, self.thumbRect.size.width, self.thumbRect.size.height);
-    [self setNeedsDisplay];
+    if (thumbImageX > [self.partRectArray[0] CGRectValue].origin.x && thumbImageX<[self.partRectArray[self.numberOfPart-1] CGRectValue].origin.x) {
+        self.thumbRect = CGRectMake(thumbImageX, self.thumbRect.origin.y, self.thumbRect.size.width, self.thumbRect.size.height);
+        [self setNeedsDisplay];
+    }
     return YES;
-    
 }
 
 //拖动结束
 - (void)endTrackingWithTouch:(nullable UITouch *)touch withEvent:(nullable UIEvent *)event {
     CGPoint point = [touch locationInView:self];
-    
     int index = [self getCurrentXWithOffset:point.x];
-    self.thumbRect = [self.partRectArray[index] CGRectValue];
-    [self setNeedsDisplay];
-    //增加控制事件
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
+    if(index >= 0 && index <= self.numberOfPart-1){
+        self.thumbRect = [self.partRectArray[index] CGRectValue];
+        [self setNeedsDisplay];
+        //增加控制事件
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 //计算滑到一半时根据占比选择对应位置
@@ -165,11 +167,20 @@
     CGFloat wid = lastx - firstx;
     CGFloat part = wid/(self.numberOfPart-1) ;
     //减去滑块占比
-    CGFloat per = self.thumbSize.width/2/part;
+    //    CGFloat per = self.thumbSize.width/2/part;
     
-    int count = tmpX / part - per + 0.5;
+    int count = tmpX / part;
+    if (count <= 0) {
+        count = 0;
+        
+    }
+    if (count>=self.numberOfPart-1) {
+        count = count;
+    }
     self.value = count;
     return count;
 }
 
 @end
+
+
