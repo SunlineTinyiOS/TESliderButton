@@ -137,6 +137,11 @@
     if (thumbImageX > [self.partRectArray[0] CGRectValue].origin.x && thumbImageX<[self.partRectArray[self.numberOfPart-1] CGRectValue].origin.x) {
         self.thumbRect = CGRectMake(thumbImageX, self.thumbRect.origin.y, self.thumbRect.size.width, self.thumbRect.size.height);
         [self setNeedsDisplay];
+        int index = [self getCurrentXWithOffset:point.x];
+        if(index >= 0 && index <= self.numberOfPart-1){
+            //增加控制事件
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
     }
     return YES;
 }
@@ -182,5 +187,4 @@
 }
 
 @end
-
 
